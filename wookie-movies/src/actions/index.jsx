@@ -3,8 +3,27 @@ import api from '../api/api';
 
 export const getMovies = () => async (dispatch) => {
   const res = await api.get();
+  const movies = res.data.movies;
+
+  // Get Movies
   dispatch({
     type: TYPES.GET_MOVIES,
-    payload: res.data.movies,
+    payload: movies,
+  });
+
+  //   Get Genres
+  let genresArr = [];
+
+  //   interate each genre in each movie
+  for (let movie of movies) {
+    movie.genres.map((genre) => {
+      if (!genresArr.includes(genre)) {
+        genresArr.push(genre);
+      }
+    });
+  }
+  dispatch({
+    type: TYPES.GET_GENRES,
+    payload: genresArr,
   });
 };
