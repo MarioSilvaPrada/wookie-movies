@@ -6,3 +6,6 @@ export const GET_GENRES = 'GET_GENRES'
 
 //get Search Input
 export const GET_SEARCH_INPUT = 'GET_SEARCH_INPUT'
+
+//get Search Input
+export const GET_MOVIE_INFO = 'GET_MOVIE_INFO'

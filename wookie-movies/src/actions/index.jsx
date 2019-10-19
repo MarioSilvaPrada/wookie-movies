@@ -35,3 +35,12 @@ export const getSearchInput = (input) => async (dispatch) => {
     payload: searchInput,
   });
 }
+
+export const getMovieInfo = (url) => async (dispatch) => {
+  const res = await api.get(url);
+  console.log(res.data)
+  dispatch({
+    type: TYPES.GET_MOVIE_INFO,
+    payload: res.data,
+  });
+}

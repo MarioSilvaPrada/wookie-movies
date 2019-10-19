@@ -2,9 +2,7 @@ import React from 'react';
 import './GenresContainer.css';
 import { Link } from 'react-router-dom';
 
-
 import { FaStar } from 'react-icons/fa';
-
 
 const GenresContainer = ({ genres, movies }) => {
   return (
@@ -16,7 +14,12 @@ const GenresContainer = ({ genres, movies }) => {
             {movies.map(
               (movie, i) =>
                 movie.genres.includes(genre) && (
-                  <Link to={`/${movie.slug}`} key={i} className='movie' style={{ textDecoration: 'none', color: 'white' }}>
+                  <Link
+                    to={`/${movie.slug}`}
+                    key={i}
+                    className='movie'
+                    style={{ textDecoration: 'none', color: 'white' }}
+                  >
                     <img className='movie-poster' alt='poster' src={movie.poster} />
                     <p>{movie.title}</p>
                     <span className='movie-rating'>
@@ -32,4 +35,4 @@ const GenresContainer = ({ genres, movies }) => {
   );
 };
 
-export default GenresContainer
+export default GenresContainer;

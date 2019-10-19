@@ -4,6 +4,9 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+// Components
+import MoviePage from './components/MoviePage/MoviePage';
+
 // Redux
 import { Provider } from 'react-redux';
 import store from './store/store';
@@ -15,6 +18,7 @@ const router = (
   <Provider store={store}>
     <Router>
       <Switch>
+        <Route exact path='/:movieSlug' component={MoviePage} />
         <Route exact path='/' component={App} />
       </Switch>
     </Router>
