@@ -1,39 +1,7 @@
 .App {
   text-align: center;
+  background-color: #fbab7e;
+  background-image: linear-gradient(62deg, #fbab7e 0%, #f7ce68 100%);
+  font-family: 'Montserrat', sans-serif;
 }
-
-.genre-container {
-  height: 30rem;
-  background: orange;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-bottom: 2rem;
-}
-
-.genre-type {
-  margin-left: 3rem;
-}
-
-.movies-container {
-  display: flex;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-  overflow-y: scroll
-}
-
-.movie{
-  display: flex;
-  flex-direction: column;
-  margin: 0 2rem ;
-  cursor: pointer;
-}
-
-.movie-poster{
-  height: 20rem;
-  border-radius: 1rem;
-}
-
-
 

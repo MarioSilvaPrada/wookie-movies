@@ -27,3 +27,11 @@ export const getMovies = () => async (dispatch) => {
     payload: genresArr,
   });
 };
+
+export const getSearchInput = (input) => async (dispatch) => {
+  let searchInput = input;
+  dispatch({
+    type: TYPES.GET_SEARCH_INPUT,
+    payload: searchInput,
+  });
+}
