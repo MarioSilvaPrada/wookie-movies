@@ -18,7 +18,7 @@ const Header = ({ movies, getSearchInput, input, history, getMovies }) => {
   }
 
   // check if there is a movie equal to search input and submit it
-  // user needs to put the exact movie name or choose one of the options given by search modal
+  // user needs to insert the exact movie name or choose one of the options given by search modal
   const onSubmitInput = (e) => {
     e.preventDefault();
     let userInput = input;
