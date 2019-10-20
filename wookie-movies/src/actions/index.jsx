@@ -38,9 +38,13 @@ export const getSearchInput = (input) => async (dispatch) => {
 
 export const getMovieInfo = (url) => async (dispatch) => {
   const res = await api.get(url);
-  console.log(res.data)
   dispatch({
     type: TYPES.GET_MOVIE_INFO,
     payload: res.data,
+  });
+
+  dispatch({
+    type: TYPES.SET_LOADING_MOVIE_PAGE,
+    payload: false,
   });
 }

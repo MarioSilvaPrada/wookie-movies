@@ -5,12 +5,18 @@ import { Link } from 'react-router-dom';
 import './Header.css';
 import { FaSearch } from 'react-icons/fa';
 
-import { getSearchInput } from '../../actions';
+import { getSearchInput, getMovies } from '../../actions';
 
-const Header = ({ movies, getSearchInput, input, history }) => {
+const Header = ({ movies, getSearchInput, input, history,getMovies }) => {
+
   useEffect(() => {
     getSearchInput('');
   }, []);
+
+  // if user starts by going to a 'Movie Page' we need to get all movies so the filter can work
+  if(!movies) {
+    getMovies()
+  }
 
   // check if there is a movie equal to search input and submit it
   const onSubmitInput = (e) => {
@@ -22,7 +28,11 @@ const Header = ({ movies, getSearchInput, input, history }) => {
         movieSlug = movie.slug;
       }
     }
-    history.push(`/${movieSlug}`);
+    input = '';
+    
+    // if movieSlug exists go to that route
+    movieSlug && history.push(`/${movieSlug}`);
+    
   };
   return (
     <div className='app-header'>
@@ -35,6 +45,7 @@ const Header = ({ movies, getSearchInput, input, history }) => {
           type='text'
           placeholder='Search for movie'
           onChange={(e) => getSearchInput(e.target.value)}
+          value={input}
         />
 
         {/* if user search for a movie search filter will show up */}
@@ -48,7 +59,7 @@ const Header = ({ movies, getSearchInput, input, history }) => {
                   to={`/${movie.slug}`}
                   style={{ textDecoration: 'none', color: 'black' }}
                 >
-                  <p>{movie.title}</p>
+                  <p className='movie-selection'>{movie.title}</p>
                 </Link>
               ))}
           </div>
@@ -58,10 +69,12 @@ const Header = ({ movies, getSearchInput, input, history }) => {
   );
 };
 
-const mapStateToProps = ({ searchInputReducer }) => ({
+const mapStateToProps = ({ searchInputReducer, moviesReducer }) => ({
   input: searchInputReducer.searchInput,
+  movies: moviesReducer.movies
 });
 
 export default connect(mapStateToProps, {
   getSearchInput,
+  getMovies
 })(Header);

@@ -18,7 +18,7 @@ function App({ getMovies, genres, movies, history }) {
 
   return movies && genres ? (
     <div className='App'>
-      <Header movies={movies} history={history}/>
+      <Header history={history}/>
       <GenresContainer genres={genres} movies={movies}/>
     </div>
   ) : (

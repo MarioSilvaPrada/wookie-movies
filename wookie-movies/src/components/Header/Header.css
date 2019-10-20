@@ -55,3 +55,11 @@
     cursor: pointer;
     margin: .5rem 0;
 }
+
+.movie-selection {
+    transition: .5s;
+}
+
+.movie-selection:hover {
+    background: orange;
+}

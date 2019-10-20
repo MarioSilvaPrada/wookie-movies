@@ -1,3 +1,54 @@
-.movie-container {
+.movie-page-container {
     display: flex;
+    flex-direction: column;
+    
 }
+
+.movie-info {
+    display: flex;
+    margin: 2rem 5rem;
+}
+
+.movie-info img {
+    border-radius: 2rem;
+}
+
+.movie-details {
+    padding: 0 5rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+.title-rating {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.rating-stars {
+    font-size: 2rem;
+    color: #e6b31e;
+}
+
+.movie-specs {
+    margin-bottom: .8rem;
+}
+
+.backBtn {
+    background: #e6b31e;
+    width: 11rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.backBtn svg {
+    font-size: 1.5rem;
+}
+
