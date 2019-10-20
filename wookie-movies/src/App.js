@@ -4,16 +4,18 @@ import './App.css';
 import { connect } from 'react-redux';
 
 // action redux
-import { getMovies } from '../src/actions';
+import { getMovies, setMoviePageLoading } from '../src/actions';
 
 // Components
 import GenresContainer from './components/GenresContainer/GernresContainer';
 import Header from './components/Header/Header';
+import Spinner from './components/Spinner/Spinner';
 
 
-function App({ getMovies, genres, movies, history }) {
+function App({ getMovies, genres, movies, history, setMoviePageLoading }) {
   useEffect(() => {
     getMovies();
+    setMoviePageLoading(true)
   }, []);
 
   return movies && genres ? (
@@ -22,7 +24,7 @@ function App({ getMovies, genres, movies, history }) {
       <GenresContainer genres={genres} movies={movies}/>
     </div>
   ) : (
-    'LOADING'
+    <Spinner />
   );
 }
 
@@ -33,4 +35,5 @@ const mapStateToProps = ({ moviesReducer }) => ({
 
 export default connect(mapStateToProps, {
   getMovies,
+  setMoviePageLoading
 })(App);

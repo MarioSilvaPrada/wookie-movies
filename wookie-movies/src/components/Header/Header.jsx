@@ -7,15 +7,14 @@ import { FaSearch } from 'react-icons/fa';
 
 import { getSearchInput, getMovies } from '../../actions';
 
-const Header = ({ movies, getSearchInput, input, history,getMovies }) => {
-
+const Header = ({ movies, getSearchInput, input, history, getMovies }) => {
   useEffect(() => {
     getSearchInput('');
   }, []);
 
-  // if user starts by going to a 'Movie Page' we need to get all movies so the filter can work
-  if(!movies) {
-    getMovies()
+  // if user starts by 'Movie Page' we need to get all movies so the filter can work
+  if (!movies) {
+    getMovies();
   }
 
   // check if there is a movie equal to search input and submit it
@@ -29,10 +28,9 @@ const Header = ({ movies, getSearchInput, input, history,getMovies }) => {
       }
     }
     input = '';
-    
+
     // if movieSlug exists go to that route
     movieSlug && history.push(`/${movieSlug}`);
-    
   };
   return (
     <div className='app-header'>
@@ -45,10 +43,9 @@ const Header = ({ movies, getSearchInput, input, history,getMovies }) => {
           type='text'
           placeholder='Search for movie'
           onChange={(e) => getSearchInput(e.target.value)}
-          value={input}
         />
 
-        {/* if user search for a movie search filter will show up */}
+        {/* if user search for a movie, modal search filter will show up */}
         {input && (
           <div className='search-filter'>
             {movies
@@ -70,11 +67,11 @@ const Header = ({ movies, getSearchInput, input, history,getMovies }) => {
 };
 
 const mapStateToProps = ({ searchInputReducer, moviesReducer }) => ({
-  input: searchInputReducer.searchInput,
-  movies: moviesReducer.movies
+  input: searchInputReducer.input,
+  movies: moviesReducer.movies,
 });
 
 export default connect(mapStateToProps, {
   getSearchInput,
-  getMovies
+  getMovies,
 })(Header);

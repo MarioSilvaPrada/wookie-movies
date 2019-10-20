@@ -28,6 +28,8 @@ export const getMovies = () => async (dispatch) => {
   });
 };
 
+
+// Get input searched by user
 export const getSearchInput = (input) => async (dispatch) => {
   let searchInput = input;
   dispatch({
@@ -36,6 +38,7 @@ export const getSearchInput = (input) => async (dispatch) => {
   });
 }
 
+// fetch movie info based on slug route
 export const getMovieInfo = (url) => async (dispatch) => {
   const res = await api.get(url);
   dispatch({
@@ -46,5 +49,13 @@ export const getMovieInfo = (url) => async (dispatch) => {
   dispatch({
     type: TYPES.SET_LOADING_MOVIE_PAGE,
     payload: false,
+  });
+}
+
+// function to dispatch loading on Movie Page to True or False
+export const setMoviePageLoading = (bool) => (dispatch) => {
+  dispatch({
+    type: TYPES.SET_LOADING_MOVIE_PAGE,
+    payload: bool,
   });
 }

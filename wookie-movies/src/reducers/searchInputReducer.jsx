@@ -1,9 +1,9 @@
 import * as TYPES from '../actions/types';
 
-export default (searchInput = '', action) => {
+export default (searchInput = {}, action) => {
   switch (action.type) {
     case TYPES.GET_SEARCH_INPUT:
-      return { searchInput: action.payload };
+      return { input: action.payload };
     default:
       return searchInput;
   }

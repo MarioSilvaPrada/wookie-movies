@@ -13,3 +13,27 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+
+/* REM */
+html {
+  font-size: 50%;
+}
+
+@media (min-width: 1000px) {
+  html{
+    font-size: 70%;
+  }
+}
+
+@media (min-width: 1200px) {
+  html{
+    font-size: 80%;
+  }
+}
+
+@media (min-width: 1500px) {
+  html{
+    font-size: 100%;
+  }
+}

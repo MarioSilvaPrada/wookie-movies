@@ -4,19 +4,32 @@ import { Link } from 'react-router-dom';
 
 import './MoviePage.css';
 
-import { getMovieInfo, getSearchInput } from '../../actions';
+import { getMovieInfo, getSearchInput, setMoviePageLoading } from '../../actions';
 import { FaRegStar, FaStar, FaStarHalfAlt } from 'react-icons/fa';
 // Components
 import Header from '../Header/Header';
+import Spinner from '../Spinner/Spinner';
 
-import { FaHome } from "react-icons/fa";
+import { FaHome } from 'react-icons/fa';
 
-const MoviePage = ({ match, getMovieInfo, getSearchInput, info, history }) => {
+const MoviePage = ({
+  match,
+  getMovieInfo,
+  getSearchInput,
+  setMoviePageLoading,
+  info,
+  history,
+  isLoading,
+}) => {
   let movieUrl = match.params.movieSlug;
 
   useEffect(
     () => {
+      // set loading of movie info to true
+      setMoviePageLoading(true);
+      // get movie info based on route (slug)
       getMovieInfo(movieUrl);
+      // empty search input
       getSearchInput('');
     },
     [ movieUrl ],
@@ -46,14 +59,16 @@ const MoviePage = ({ match, getMovieInfo, getSearchInput, info, history }) => {
       }
     }
 
-    return numberStars
+    return numberStars;
   };
 
-  console.log(info);
   // console.log(info.cast)
-  return info ? (
+  return isLoading ? (
+    <Spinner />
+  ) : (
     <div className='movie-page-container'>
       <Header history={history} />
+      <img className='movie-backdrop' src={info.backdrop} />
       <div className='movie-info'>
         <img src={info.poster} />
         <div className='movie-details'>
@@ -63,34 +78,32 @@ const MoviePage = ({ match, getMovieInfo, getSearchInput, info, history }) => {
             </h2>
             <div className='rating-stars'>{getStars()}</div>
           </div>
-          <div  className='movie-data'>
+          <div className='movie-data'>
             <div className='movie-specs'>
               {new Date(info.released_on).getFullYear()} | {info.length} | {info.director}
             </div>
-            <div className='movie-cast'><b>Cast:</b> {info.cast.join(', ')}</div>
+            <div className='movie-cast'>
+              <b>Cast:</b> {info.cast.join(', ')}
+            </div>
           </div>
-          <div  className='movie-overview'>
-            {info.overview}
-          </div>
-          <Link  className='backBtn'
-           to={'/'}
-           style={{ textDecoration: 'none', color: 'black' }}>
+          <div className='movie-overview'>{info.overview}</div>
+          <Link className='backBtn' to={'/'}>
             <FaHome />
-            <span>Go Back to Home</span>
+            <span>Go Home</span>
           </Link>
         </div>
       </div>
     </div>
-  ) : (
-    'LOADING'
   );
 };
 
 const mapStateToProps = ({ movieInfoReducer }) => ({
   info: movieInfoReducer.info,
+  isLoading: movieInfoReducer.loading,
 });
 
 export default connect(mapStateToProps, {
   getMovieInfo,
   getSearchInput,
+  setMoviePageLoading,
 })(MoviePage);
