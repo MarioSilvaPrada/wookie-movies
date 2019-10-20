@@ -3,13 +3,14 @@
   flex-direction: column;
   color: white;
   background-color: rgba(0, 0, 0, 0.8);
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .movie-info {
   display: flex;
   margin: 2rem 5rem;
   align-self: center;
+  position: relative;
 }
 
 .movie-info img {
@@ -82,7 +83,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    margin: 0 3rem;
+    margin: 2rem 3rem;
     height: 90%;
   }
 
@@ -95,13 +96,18 @@
     width: 80%;
   }
 
+  .movie-backdrop {
+    min-height: 90vh;
+  }
+
   .movie-data {
     text-align: center;
   }
 
   .movie-data,
   .title-rating,
-  .movie-overview {
+  .movie-overview,
+  .movie-info img  {
     margin-bottom: 1rem;
   }
 
@@ -113,4 +119,6 @@
   .title-rating {
     flex-direction: column;
   }
+
+  
 }

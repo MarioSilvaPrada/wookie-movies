@@ -68,9 +68,9 @@ const MoviePage = ({
   ) : (
     <div className='movie-page-container'>
       <Header history={history} />
-      <img className='movie-backdrop' src={info.backdrop} />
+      <img alt={'backdrop'} className='movie-backdrop' src={info.backdrop} />
       <div className='movie-info'>
-        <img src={info.poster} />
+        <img alt={'poster'} src={info.poster} />
         <div className='movie-details'>
           <div className='title-rating'>
             <h2>

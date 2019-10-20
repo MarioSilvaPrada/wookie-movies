@@ -15,9 +15,6 @@
   color: white;
 }
 
-::-webkit-scrollbar * {
-}
-
 ::-webkit-scrollbar {
   width: .5rem;
   background: transparent;

@@ -82,4 +82,9 @@
     width: 100%;
     margin-left: 5rem;
   }
+
+  .search-filter{
+    width: 95%;
+    margin-top: 1rem;
+  }
 }
